@@ -2,7 +2,7 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
 	<Header>
 		<Application name="JPMML-SkLearn" version="1.6.4"/>
-		<Timestamp>2020-08-17T06:55:29Z</Timestamp>
+		<Timestamp>2020-08-17T08:29:21Z</Timestamp>
 	</Header>
 	<MiningBuildTask>
 		<Extension>PMMLPipeline(steps=[('classifier', DecisionTreeClassifier())])</Extension>
