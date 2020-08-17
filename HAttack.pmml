@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.6.4"/>
+		<Timestamp>2020-08-17T06:55:29Z</Timestamp>
+	</Header>
+	<MiningBuildTask>
+		<Extension>PMMLPipeline(steps=[('classifier', DecisionTreeClassifier())])</Extension>
+	</MiningBuildTask>
+	<DataDictionary>
+		<DataField name="target" optype="categorical" dataType="integer">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="age" optype="continuous" dataType="float"/>
+		<DataField name="chest_pain_type_atypical angina" optype="continuous" dataType="float"/>
+		<DataField name="chest_pain_type_typical angina" optype="continuous" dataType="float"/>
+		<DataField name="cholesterol" optype="continuous" dataType="float"/>
+		<DataField name="exercise_induced_angina_yes" optype="continuous" dataType="float"/>
+		<DataField name="fasting_blood_sugar_lower than 120mg/ml" optype="continuous" dataType="float"/>
+		<DataField name="max_heart_rate_achieved" optype="continuous" dataType="float"/>
+		<DataField name="num_major_vessels" optype="continuous" dataType="float"/>
+		<DataField name="rest_ecg_normal" optype="continuous" dataType="float"/>
+		<DataField name="resting_blood_pressure" optype="continuous" dataType="float"/>
+		<DataField name="sex_male" optype="continuous" dataType="float"/>
+		<DataField name="st_depression" optype="continuous" dataType="float"/>
+		<DataField name="st_slope_flat" optype="continuous" dataType="float"/>
+		<DataField name="thalassemia_fixed defect" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<TransformationDictionary/>
+	<TreeModel functionName="classification" missingValueStrategy="nullPrediction">
+		<MiningSchema>
+			<MiningField name="target" usageType="target"/>
+			<MiningField name="thalassemia_fixed defect"/>
+			<MiningField name="num_major_vessels"/>
+			<MiningField name="exercise_induced_angina_yes"/>
+			<MiningField name="age"/>
+			<MiningField name="fasting_blood_sugar_lower than 120mg/ml"/>
+			<MiningField name="st_depression"/>
+			<MiningField name="chest_pain_type_typical angina"/>
+			<MiningField name="sex_male"/>
+			<MiningField name="max_heart_rate_achieved"/>
+			<MiningField name="cholesterol"/>
+			<MiningField name="resting_blood_pressure"/>
+			<MiningField name="rest_ecg_normal"/>
+			<MiningField name="st_slope_flat"/>
+			<MiningField name="chest_pain_type_atypical angina"/>
+		</MiningSchema>
+		<Output>
+			<OutputField name="probability(0)" optype="continuous" dataType="double" feature="probability" value="0"/>
+			<OutputField name="probability(1)" optype="continuous" dataType="double" feature="probability" value="1"/>
+		</Output>
+		<LocalTransformations>
+			<DerivedField name="double(thalassemia_fixed defect)" optype="continuous" dataType="double">
+				<FieldRef field="thalassemia_fixed defect"/>
+			</DerivedField>
+			<DerivedField name="double(num_major_vessels)" optype="continuous" dataType="double">
+				<FieldRef field="num_major_vessels"/>
+			</DerivedField>
+			<DerivedField name="double(exercise_induced_angina_yes)" optype="continuous" dataType="double">
+				<FieldRef field="exercise_induced_angina_yes"/>
+			</DerivedField>
+			<DerivedField name="double(age)" optype="continuous" dataType="double">
+				<FieldRef field="age"/>
+			</DerivedField>
+			<DerivedField name="double(fasting_blood_sugar_lower than 120mg/ml)" optype="continuous" dataType="double">
+				<FieldRef field="fasting_blood_sugar_lower than 120mg/ml"/>
+			</DerivedField>
+			<DerivedField name="double(st_depression)" optype="continuous" dataType="double">
+				<FieldRef field="st_depression"/>
+			</DerivedField>
+			<DerivedField name="double(chest_pain_type_typical angina)" optype="continuous" dataType="double">
+				<FieldRef field="chest_pain_type_typical angina"/>
+			</DerivedField>
+			<DerivedField name="double(sex_male)" optype="continuous" dataType="double">
+				<FieldRef field="sex_male"/>
+			</DerivedField>
+			<DerivedField name="double(max_heart_rate_achieved)" optype="continuous" dataType="double">
+				<FieldRef field="max_heart_rate_achieved"/>
+			</DerivedField>
+			<DerivedField name="double(cholesterol)" optype="continuous" dataType="double">
+				<FieldRef field="cholesterol"/>
+			</DerivedField>
+			<DerivedField name="double(resting_blood_pressure)" optype="continuous" dataType="double">
+				<FieldRef field="resting_blood_pressure"/>
+			</DerivedField>
+			<DerivedField name="double(rest_ecg_normal)" optype="continuous" dataType="double">
+				<FieldRef field="rest_ecg_normal"/>
+			</DerivedField>
+			<DerivedField name="double(st_slope_flat)" optype="continuous" dataType="double">
+				<FieldRef field="st_slope_flat"/>
+			</DerivedField>
+			<DerivedField name="double(chest_pain_type_atypical angina)" optype="continuous" dataType="double">
+				<FieldRef field="chest_pain_type_atypical angina"/>
+			</DerivedField>
+		</LocalTransformations>
+		<Node>
+			<True/>
+			<Node>
+				<SimplePredicate field="double(thalassemia_fixed defect)" operator="lessOrEqual" value="0.5"/>
+				<Node>
+					<SimplePredicate field="double(num_major_vessels)" operator="lessOrEqual" value="0.5"/>
+					<Node>
+						<SimplePredicate field="double(exercise_induced_angina_yes)" operator="lessOrEqual" value="0.5"/>
+						<Node>
+							<SimplePredicate field="double(age)" operator="lessOrEqual" value="51.0"/>
+							<Node score="1" recordCount="2.0">
+								<SimplePredicate field="double(fasting_blood_sugar_lower than 120mg/ml)" operator="lessOrEqual" value="0.5"/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="2.0"/>
+							</Node>
+							<Node>
+								<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="0.25"/>
+								<Node>
+									<SimplePredicate field="double(chest_pain_type_typical angina)" operator="lessOrEqual" value="0.5"/>
+									<Node score="0" recordCount="2.0">
+										<SimplePredicate field="double(age)" operator="lessOrEqual" value="42.0"/>
+										<ScoreDistribution value="0" recordCount="2.0"/>
+										<ScoreDistribution value="1" recordCount="0.0"/>
+									</Node>
+									<Node score="1" recordCount="1.0">
+										<True/>
+										<ScoreDistribution value="0" recordCount="0.0"/>
+										<ScoreDistribution value="1" recordCount="1.0"/>
+									</Node>
+								</Node>
+								<Node score="1" recordCount="2.0">
+									<True/>
+									<ScoreDistribution value="0" recordCount="0.0"/>
+									<ScoreDistribution value="1" recordCount="2.0"/>
+								</Node>
+							</Node>
+							<Node score="0" recordCount="6.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="6.0"/>
+								<ScoreDistribution value="1" recordCount="0.0"/>
+							</Node>
+						</Node>
+						<Node score="1" recordCount="9.0">
+							<SimplePredicate field="double(age)" operator="lessOrEqual" value="56.5"/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="9.0"/>
+						</Node>
+						<Node>
+							<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="0.3500000089406967"/>
+							<Node score="1" recordCount="1.0">
+								<SimplePredicate field="double(sex_male)" operator="lessOrEqual" value="0.5"/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="1.0"/>
+							</Node>
+							<Node score="0" recordCount="2.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="2.0"/>
+								<ScoreDistribution value="1" recordCount="0.0"/>
+							</Node>
+						</Node>
+						<Node score="1" recordCount="7.0">
+							<SimplePredicate field="double(age)" operator="lessOrEqual" value="66.5"/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="7.0"/>
+						</Node>
+						<Node score="0" recordCount="1.0">
+							<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="155.0"/>
+							<ScoreDistribution value="0" recordCount="1.0"/>
+							<ScoreDistribution value="1" recordCount="0.0"/>
+						</Node>
+						<Node score="1" recordCount="1.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="1.0"/>
+						</Node>
+					</Node>
+					<Node>
+						<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="1.550000011920929"/>
+						<Node>
+							<SimplePredicate field="double(cholesterol)" operator="lessOrEqual" value="240.5"/>
+							<Node>
+								<SimplePredicate field="double(age)" operator="lessOrEqual" value="52.5"/>
+								<Node score="1" recordCount="1.0">
+									<SimplePredicate field="double(age)" operator="lessOrEqual" value="45.0"/>
+									<ScoreDistribution value="0" recordCount="0.0"/>
+									<ScoreDistribution value="1" recordCount="1.0"/>
+								</Node>
+								<Node score="0" recordCount="2.0">
+									<True/>
+									<ScoreDistribution value="0" recordCount="2.0"/>
+									<ScoreDistribution value="1" recordCount="0.0"/>
+								</Node>
+							</Node>
+							<Node score="1" recordCount="4.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="4.0"/>
+							</Node>
+						</Node>
+						<Node score="0" recordCount="5.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="5.0"/>
+							<ScoreDistribution value="1" recordCount="0.0"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="15.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="15.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(resting_blood_pressure)" operator="lessOrEqual" value="109.0"/>
+					<Node score="1" recordCount="2.0">
+						<SimplePredicate field="double(age)" operator="lessOrEqual" value="55.0"/>
+						<ScoreDistribution value="0" recordCount="0.0"/>
+						<ScoreDistribution value="1" recordCount="2.0"/>
+					</Node>
+					<Node score="0" recordCount="1.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="1.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node score="1" recordCount="1.0">
+					<SimplePredicate field="double(cholesterol)" operator="lessOrEqual" value="128.5"/>
+					<ScoreDistribution value="0" recordCount="0.0"/>
+					<ScoreDistribution value="1" recordCount="1.0"/>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(num_major_vessels)" operator="lessOrEqual" value="3.5"/>
+					<Node score="0" recordCount="48.0">
+						<SimplePredicate field="double(age)" operator="lessOrEqual" value="61.5"/>
+						<ScoreDistribution value="0" recordCount="48.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+					<Node>
+						<SimplePredicate field="double(rest_ecg_normal)" operator="lessOrEqual" value="0.5"/>
+						<Node>
+							<SimplePredicate field="double(resting_blood_pressure)" operator="lessOrEqual" value="137.0"/>
+							<Node score="0" recordCount="2.0">
+								<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="102.0"/>
+								<ScoreDistribution value="0" recordCount="2.0"/>
+								<ScoreDistribution value="1" recordCount="0.0"/>
+							</Node>
+							<Node score="1" recordCount="3.0">
+								<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="157.0"/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="3.0"/>
+							</Node>
+							<Node score="0" recordCount="1.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="1.0"/>
+								<ScoreDistribution value="1" recordCount="0.0"/>
+							</Node>
+						</Node>
+						<Node score="0" recordCount="4.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="4.0"/>
+							<ScoreDistribution value="1" recordCount="0.0"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="12.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="12.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node score="0" recordCount="1.0">
+					<SimplePredicate field="double(chest_pain_type_typical angina)" operator="lessOrEqual" value="0.5"/>
+					<ScoreDistribution value="0" recordCount="1.0"/>
+					<ScoreDistribution value="1" recordCount="0.0"/>
+				</Node>
+				<Node score="1" recordCount="1.0">
+					<True/>
+					<ScoreDistribution value="0" recordCount="0.0"/>
+					<ScoreDistribution value="1" recordCount="1.0"/>
+				</Node>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(num_major_vessels)" operator="lessOrEqual" value="0.5"/>
+				<Node>
+					<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="2.799999952316284"/>
+					<Node>
+						<SimplePredicate field="double(age)" operator="lessOrEqual" value="57.5"/>
+						<Node>
+							<SimplePredicate field="double(resting_blood_pressure)" operator="lessOrEqual" value="109.0"/>
+							<Node score="1" recordCount="5.0">
+								<SimplePredicate field="double(sex_male)" operator="lessOrEqual" value="0.5"/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="5.0"/>
+							</Node>
+							<Node score="1" recordCount="1.0">
+								<SimplePredicate field="double(st_slope_flat)" operator="lessOrEqual" value="0.5"/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="1.0"/>
+							</Node>
+							<Node score="0" recordCount="1.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="1.0"/>
+								<ScoreDistribution value="1" recordCount="0.0"/>
+							</Node>
+						</Node>
+						<Node score="1" recordCount="69.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="69.0"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="1.0">
+						<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="83.5"/>
+						<ScoreDistribution value="0" recordCount="1.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+					<Node>
+						<SimplePredicate field="double(cholesterol)" operator="lessOrEqual" value="243.5"/>
+						<Node score="1" recordCount="11.0">
+							<SimplePredicate field="double(exercise_induced_angina_yes)" operator="lessOrEqual" value="0.5"/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="11.0"/>
+						</Node>
+						<Node score="0" recordCount="1.0">
+							<SimplePredicate field="double(sex_male)" operator="lessOrEqual" value="0.5"/>
+							<ScoreDistribution value="0" recordCount="1.0"/>
+							<ScoreDistribution value="1" recordCount="0.0"/>
+						</Node>
+						<Node score="1" recordCount="3.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="3.0"/>
+						</Node>
+					</Node>
+					<Node>
+						<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="1.300000011920929"/>
+						<Node>
+							<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="0.20000000298023224"/>
+							<Node>
+								<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="170.5"/>
+								<Node score="0" recordCount="3.0">
+									<SimplePredicate field="double(age)" operator="lessOrEqual" value="62.5"/>
+									<ScoreDistribution value="0" recordCount="3.0"/>
+									<ScoreDistribution value="1" recordCount="0.0"/>
+								</Node>
+								<Node score="1" recordCount="2.0">
+									<SimplePredicate field="double(chest_pain_type_atypical angina)" operator="lessOrEqual" value="0.5"/>
+									<ScoreDistribution value="0" recordCount="0.0"/>
+									<ScoreDistribution value="1" recordCount="2.0"/>
+								</Node>
+								<Node score="0" recordCount="1.0">
+									<True/>
+									<ScoreDistribution value="0" recordCount="1.0"/>
+									<ScoreDistribution value="1" recordCount="0.0"/>
+								</Node>
+							</Node>
+							<Node score="1" recordCount="3.0">
+								<True/>
+								<ScoreDistribution value="0" recordCount="0.0"/>
+								<ScoreDistribution value="1" recordCount="3.0"/>
+							</Node>
+						</Node>
+						<Node score="1" recordCount="6.0">
+							<True/>
+							<ScoreDistribution value="0" recordCount="0.0"/>
+							<ScoreDistribution value="1" recordCount="6.0"/>
+						</Node>
+					</Node>
+					<Node score="0" recordCount="2.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="2.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node score="1" recordCount="2.0">
+					<SimplePredicate field="double(resting_blood_pressure)" operator="lessOrEqual" value="135.0"/>
+					<ScoreDistribution value="0" recordCount="0.0"/>
+					<ScoreDistribution value="1" recordCount="2.0"/>
+				</Node>
+				<Node score="0" recordCount="3.0">
+					<True/>
+					<ScoreDistribution value="0" recordCount="3.0"/>
+					<ScoreDistribution value="1" recordCount="0.0"/>
+				</Node>
+			</Node>
+			<Node>
+				<SimplePredicate field="double(chest_pain_type_atypical angina)" operator="lessOrEqual" value="0.5"/>
+				<Node>
+					<SimplePredicate field="double(st_slope_flat)" operator="lessOrEqual" value="0.5"/>
+					<Node score="0" recordCount="10.0">
+						<SimplePredicate field="double(age)" operator="lessOrEqual" value="63.5"/>
+						<ScoreDistribution value="0" recordCount="10.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+					<Node score="1" recordCount="1.0">
+						<SimplePredicate field="double(sex_male)" operator="lessOrEqual" value="0.5"/>
+						<ScoreDistribution value="0" recordCount="0.0"/>
+						<ScoreDistribution value="1" recordCount="1.0"/>
+					</Node>
+					<Node score="1" recordCount="1.0">
+						<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="0.4999999888241291"/>
+						<ScoreDistribution value="0" recordCount="0.0"/>
+						<ScoreDistribution value="1" recordCount="1.0"/>
+					</Node>
+					<Node score="0" recordCount="5.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="5.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node>
+					<SimplePredicate field="double(sex_male)" operator="lessOrEqual" value="0.5"/>
+					<Node score="1" recordCount="8.0">
+						<SimplePredicate field="double(cholesterol)" operator="lessOrEqual" value="311.0"/>
+						<ScoreDistribution value="0" recordCount="0.0"/>
+						<ScoreDistribution value="1" recordCount="8.0"/>
+					</Node>
+					<Node score="0" recordCount="1.0">
+						<True/>
+						<ScoreDistribution value="0" recordCount="1.0"/>
+						<ScoreDistribution value="1" recordCount="0.0"/>
+					</Node>
+				</Node>
+				<Node score="0" recordCount="6.0">
+					<SimplePredicate field="double(st_depression)" operator="lessOrEqual" value="0.45000000670552254"/>
+					<ScoreDistribution value="0" recordCount="6.0"/>
+					<ScoreDistribution value="1" recordCount="0.0"/>
+				</Node>
+				<Node score="1" recordCount="3.0">
+					<SimplePredicate field="double(age)" operator="lessOrEqual" value="55.5"/>
+					<ScoreDistribution value="0" recordCount="0.0"/>
+					<ScoreDistribution value="1" recordCount="3.0"/>
+				</Node>
+				<Node score="0" recordCount="1.0">
+					<True/>
+					<ScoreDistribution value="0" recordCount="1.0"/>
+					<ScoreDistribution value="1" recordCount="0.0"/>
+				</Node>
+			</Node>
+			<Node score="0" recordCount="1.0">
+				<SimplePredicate field="double(max_heart_rate_achieved)" operator="lessOrEqual" value="128.0"/>
+				<ScoreDistribution value="0" recordCount="1.0"/>
+				<ScoreDistribution value="1" recordCount="0.0"/>
+			</Node>
+			<Node score="1" recordCount="15.0">
+				<True/>
+				<ScoreDistribution value="0" recordCount="0.0"/>
+				<ScoreDistribution value="1" recordCount="15.0"/>
+			</Node>
+		</Node>
+	</TreeModel>
+</PMML>
